@@ -1,0 +1,13 @@
+*{
+  text-align: center;
+  text-decoration: none;
+  background-color: #2F4F4F;
+}
+body{
+  margin: 0px 70px 0px 70px;
+}
+@media screen and (max-width:600px) {
+  body{
+      margin: 0px 20px 0px 20px;
+  }
+}
