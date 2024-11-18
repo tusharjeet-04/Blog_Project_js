@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext,useEffect,useState } from 'react'
 import Navbar from './Navbar'
 import DataContext from './DataContext'
 import "./Home.css"
@@ -6,6 +6,23 @@ import { Link } from 'react-router-dom'
 import Footer from './Footer'
 
 const Fitness = () => {
+  const[visible,setVisible]=useState(5)
+  const[show,setShow]=useState(6);
+
+  const handleLoad=()=>{
+    setVisible((prev)=>prev+3)
+    setShow((prev)=>prev+6)
+  }
+  const [isloading, setIsloading] = useState(true);
+
+  useEffect(() => {
+    const loader = () => {
+      setTimeout(() => {
+        setIsloading(false);
+      }, 1000);
+    };
+    loader();
+  }, []);
   const data = useContext(DataContext);
   const Fitness = data.filter((item)=>item.category == "Fitness");
   const AdData = [
@@ -36,12 +53,20 @@ const Fitness = () => {
     }
   ];
   const random = Math.round(Math.random() * (Fitness.length-2));
-  
+  const limitdescription =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,15).join(' ') + (words.length > 15 ? '...' : '');
+  }
+  const description =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,45).join(' ') + (words.length > 50? '...' : '');
+  }
   return (
     <>
-
-      <Navbar />
-      <div className="Bollywoodmain">
+<Navbar />
+      {isloading ? (<div class="loader"></div>):(
+<>
+      <div className="Bollywood-main-page">
         <h1 className="main-heading">Fitness</h1>
         <div className="home-page-child-one">
           {Fitness.slice(4, 7).map((item) => (
@@ -50,7 +75,7 @@ const Fitness = () => {
                 <Link to={`/details/${item.id}`}>
                   <img
                     src={item.img_url}
-                    alt={item.title}
+                    alt="Bollywood movie"
                     className="BollyMainimg"
                   />
                   <h3 className="Title">{item.title}</h3>
@@ -62,54 +87,58 @@ const Fitness = () => {
         </div>
       </div>
 
-
       <div className="story-post">
         <div className="top-stories">
           <div className="latest">
             <h1>Top Stories</h1>
             <div className="home-page-header-line"></div>
           </div>
-          {Fitness.slice(0, 16).map((item) => (
+          {Fitness.slice(0, visible).map((item) => (
             <>
               <Link className="story-data" to={`/details/${item.id}`}>
-                <div className="storyimg">
+                <div className="storyimage">
                   <img className="imagestory" src={item.img_url} alt="data" />
                   <h3 className="story-category">{item.category}</h3>
                 </div>
                 <div className="title-description">
                   <h2 className="Title storytitle">{item.title}</h2>
                   <p className="story-description description">
-                    {item.description}
+                    {description(item.description)}
                   </p>
                 </div>
               </Link>
             </>
           ))}
+          
         </div>
 
-        <div className="top-post-main">
-          <div className="top-post">
+        <div className="top-post-main-bollywood">
+          <div className="top-post-bollywood">
             <h1>Top Posts</h1>
-            <Link to={`/details/${Fitness[random].id}`}
-            className="mainpost">
-              <img className="main-post-image" src={Fitness[random].img_url}width={680} height={400} />
-              <p className="main-post-text">{Fitness[random].description}</p>
+            <Link
+              to={`/details/${Fitness[random].id}`}
+              className="mainpost-bollywood"
+            >
+              <img className="main-post-image-bollywood" src={Fitness[random].img_url} width={680} height={400}/>
+              <p className="main-post-text-bollywood">{description(Fitness[random].description)}</p>
             </Link>
           </div>
-          <div className="normalpost">
-            {Fitness.slice(12, 16).map((item) => (
+          <div className="normal-post-bollywood">
+            {Fitness.slice(0, show).map((item) => (
               <>
-              <Link to={`/details/${item.id}`}>
-                <div className="post">
-                  <img src={item.img_url} />
-                  <p>{item.description}</p>
+                <Link to={`/details/${item.id}`}>
+                  <div className="post-bollywood">
+                    <img src={item.img_url} />
+                    <p>{limitdescription(item.description)}</p>
                   </div>
                 </Link>
               </>
             ))}
           </div>
+           <button className="Load-more" onClick={handleLoad}>LoadMore
+           </button>
 
-          <div className="advertisement">
+          {/* <div className="advertisement">
             <div className="Ad-Heading">
               <p>Advertisement</p>
             </div>
@@ -124,12 +153,15 @@ const Fitness = () => {
                 </>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
-      <Footer/>
+      <Footer />
+      </>
+    )}
+
     </>
   );
-}
+};
 
 export default Fitness

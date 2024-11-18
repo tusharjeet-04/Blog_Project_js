@@ -67,7 +67,11 @@ const Home = () => {
   }
   const limitdescription =(text)=>{
     const words =text.split(' ');
-    return words.slice(0,15).join(' ') + (words.length > 15 ? '...' : '');
+    return words.slice(0,45).join(' ') + (words.length > 45 ? '...' : '');
+  }
+  const description =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,45).join(' ') + (words.length > 50? '...' : '');
   }
   return (
     <>
@@ -136,7 +140,7 @@ const Home = () => {
             <h1>Top Stories</h1>
             <div className="home-page-header-line"></div>
           </div>
-          {data.slice(0, 16).map((item) => (
+          {data.slice(0, 14).map((item) => (
             <>
               <Link className="story-data" to={`/details/${item.id}`}>
                 <div className="storyimage">
@@ -146,7 +150,7 @@ const Home = () => {
                 <div className="title-description">
                   <h2 className="Title storytitle">{item.title}</h2>
                   <p className="story-description description">
-                    {limitdescription(item.description)}
+                    {description(item.description)}
                   </p>
                 </div>
               </Link>
@@ -158,7 +162,7 @@ const Home = () => {
           <div className="top-post">
             <h1>Top Posts</h1>
             <Link to={`/details/${data[random].id}`} className="main-post">
-              <img className="main-post-image"src={data[random].img_url} width={680} height={400}/>
+              <img className="main-post-image"src={data[random].img_url} />
               <p className="main-post-text">{limitdescription(data[random].description)}</p>
             </Link>
           </div>

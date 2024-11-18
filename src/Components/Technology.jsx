@@ -7,6 +7,13 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
 const Technology = () => {
+  const[visible,setVisible]=useState(5)
+  const[show,setShow]=useState(6);
+
+  const handleLoad=()=>{
+    setVisible((prev)=>prev+3)
+    setShow((prev)=>prev+6)
+  }
   const [isloading, setIsloading] = useState(true);
 
   useEffect(() => {
@@ -17,7 +24,6 @@ const Technology = () => {
     };
     loader();
   }, []);
-
   const data = useContext(DataContext);
   const Technology = data.filter((item) => item.category == "Technology");
   const AdData = [
@@ -48,16 +54,23 @@ const Technology = () => {
     }
   ];
   const random = Math.round(Math.random() * (Technology.length - 2));
-
+  const limitdescription =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,15).join(' ') + (words.length > 15 ? '...' : '');
+  }
+  const description =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,45).join(' ') + (words.length > 50? '...' : '');
+  }
   return (
     <>
-      <Navbar />
+       <Navbar />
       {isloading ? (<div class="loader"></div>):(
 <>
       <div className="Bollywood-main-page">
         <h1 className="main-heading">Technology</h1>
         <div className="home-page-child-one">
-          {Technology.slice(9, 12).map((item) => (
+          {Technology.slice(4, 7).map((item) => (
             <>
               <div className="BollyMainMovie">
                 <Link to={`/details/${item.id}`}>
@@ -81,7 +94,7 @@ const Technology = () => {
             <h1>Top Stories</h1>
             <div className="home-page-header-line"></div>
           </div>
-          {Technology.slice(0, 16).map((item) => (
+          {Technology.slice(0, visible).map((item) => (
             <>
               <Link className="story-data" to={`/details/${item.id}`}>
                 <div className="storyimage">
@@ -91,39 +104,42 @@ const Technology = () => {
                 <div className="title-description">
                   <h2 className="Title storytitle">{item.title}</h2>
                   <p className="story-description description">
-                    {item.description}
+                    {description(item.description)}
                   </p>
                 </div>
               </Link>
             </>
           ))}
+          
         </div>
 
-        <div className="top-post-main">
-          <div className="top-post">
+        <div className="top-post-main-bollywood">
+          <div className="top-post-bollywood">
             <h1>Top Posts</h1>
             <Link
               to={`/details/${Technology[random].id}`}
-              className="mainpost"
+              className="mainpost-bollywood"
             >
-              <img className="main-post-image"  src={Technology[random].img_url} width={680} height={400} />
-              <p className="main-post-text">{Technology[random].description}</p>
+              <img className="main-post-image-bollywood" src={Technology[random].img_url} width={680} height={400}/>
+              <p className="main-post-text-bollywood">{description(Technology[random].description)}</p>
             </Link>
           </div>
-          <div className="normal-post">
-            {Technology.slice(12, 16).map((item) => (
+          <div className="normal-post-bollywood">
+            {Technology.slice(0, show).map((item) => (
               <>
                 <Link to={`/details/${item.id}`}>
-                  <div className="post">
+                  <div className="post-bollywood">
                     <img src={item.img_url} />
-                    <p>{item.description}</p>
+                    <p>{limitdescription(item.description)}</p>
                   </div>
                 </Link>
               </>
             ))}
           </div>
+           <button className="Load-more" onClick={handleLoad}>LoadMore
+           </button>
 
-          <div className="advertisement">
+          {/* <div className="advertisement">
             <div className="Ad-Heading">
               <p>Advertisement</p>
             </div>
@@ -138,7 +154,7 @@ const Technology = () => {
                 </>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <Footer />

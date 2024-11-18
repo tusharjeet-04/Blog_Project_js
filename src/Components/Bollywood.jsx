@@ -8,7 +8,7 @@ import Footer from "./Footer";
 
 const Bollywood = () => {
   const[visible,setVisible]=useState(5)
-  const[show,setShow]=useState(10);
+  const[show,setShow]=useState(6);
 
   const handleLoad=()=>{
     setVisible((prev)=>prev+3)
@@ -60,6 +60,10 @@ const Bollywood = () => {
     const words =text.split(' ');
     return words.slice(0,15).join(' ') + (words.length > 15 ? '...' : '');
   }
+  const description =(text)=>{
+    const words =text.split(' ');
+    return words.slice(0,45).join(' ') + (words.length > 50? '...' : '');
+  }
   return (
     <>
       <Navbar />
@@ -102,7 +106,7 @@ const Bollywood = () => {
                 <div className="title-description">
                   <h2 className="Title storytitle">{item.title}</h2>
                   <p className="story-description description">
-                    {limitdescription(item.description)}
+                    {description(item.description)}
                   </p>
                 </div>
               </Link>
@@ -111,22 +115,22 @@ const Bollywood = () => {
           
         </div>
 
-        <div className="top-post-main">
-          <div className="top-post">
+        <div className="top-post-main-bollywood">
+          <div className="top-post-bollywood">
             <h1>Top Posts</h1>
             <Link
               to={`/details/${bollyMovies[random].id}`}
-              className="mainpost"
+              className="mainpost-bollywood"
             >
-              <img className="main-post-image" src={bollyMovies[random].img_url} width={680} height={400}/>
-              <p className="main-post-text">{bollyMovies[random].description}</p>
+              <img className="main-post-image-bollywood" src={bollyMovies[random].img_url} width={680} height={400}/>
+              <p className="main-post-text-bollywood">{description(bollyMovies[random].description)}</p>
             </Link>
           </div>
-          <div className="normal-post">
+          <div className="normal-post-bollywood">
             {bollyMovies.slice(0, show).map((item) => (
               <>
                 <Link to={`/details/${item.id}`}>
-                  <div className="post">
+                  <div className="post-bollywood">
                     <img src={item.img_url} />
                     <p>{limitdescription(item.description)}</p>
                   </div>
@@ -134,7 +138,7 @@ const Bollywood = () => {
               </>
             ))}
           </div>
-           <button onClick={handleLoad}>LoadMore
+           <button className="Load-more" onClick={handleLoad}>LoadMore
            </button>
 
           {/* <div className="advertisement">
