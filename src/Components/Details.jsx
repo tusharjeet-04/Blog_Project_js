@@ -37,7 +37,7 @@ const Details = () => {
                 <div className="animeImg"></div>
                 <div className="namedate">
                   <h3>Tusharjeet Rout</h3>
-                  <h4>22 April 2024</h4>
+                  <h4>18 November 2024</h4>
                 </div>
               </div>
               <div className="socialmedia">
@@ -53,7 +53,6 @@ const Details = () => {
             <div className="parlike">
               <div className="like">
                 <div className="likeimg"></div>
-                <div>Like</div>
               </div>
 
               <div className="likepotioned">
@@ -72,7 +71,7 @@ const Details = () => {
                 <div className="animeImg"></div>
                 <div className="namedate">
                   <h3>Tusharjeet Rout</h3>
-                  <h4>22 April 2024</h4>
+                  <h4>18 November 2024</h4>
                 </div>
               </div>
             </div>

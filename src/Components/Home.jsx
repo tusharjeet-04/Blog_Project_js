@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import Navbar from "./Navbar";
 import DataContext from "./DataContext";
 import "./Home.css";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 
 const Home = () => {
+  const [searchText,setSearchText] = useState("");
+  const navigate= useNavigate();
+
+  const handleSearch=()=>{
+    navigate(`search/${searchText}`);
+  }
+
   const data = useContext(DataContext);
   const AdData = [
     {
@@ -44,22 +51,22 @@ const Home = () => {
     (item) =>
       item.id ===
       parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length-2)))+1])
-  );
+  ) || {};
   const img2 = data.find(
     (item) =>
       item.id ===
       parseInt(SelectedArray[(Math.round(Math.random() *(SelectedArray.length-2)))+1])
-  );
+  ) || {};
   const img3 = data.find(
     (item) =>
       item.id ===
       parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length-2)))+1])
-  );
+  ) || {};
 
   
   let random = Math.round(Math.random() * (data.length - 2));
-  if(random == 0){
-    random = random + 1;
+  if(random <0){
+    random = 0;
   }
 
   if(random == (data.length - 2)){
@@ -67,7 +74,7 @@ const Home = () => {
   }
   const limitdescription =(text)=>{
     const words =text.split(' ');
-    return words.slice(0,45).join(' ') + (words.length > 45 ? '...' : '');
+    return words.slice(0,15).join(' ') + (words.length > 15? '...' : '');
   }
   const description =(text)=>{
     const words =text.split(' ');
@@ -76,7 +83,10 @@ const Home = () => {
   return (
     <>
       <Navbar />
-
+      <div className="search-container">
+          <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)} className="search-input" placeholder="Search in Glitz & Bytes"/>
+          <button onClick={handleSearch} className="search-button"></button>
+        </div>
       <div className="home-page-parent">
         <div className="home-page-header">
           <div className="headerbox1 headerbox">
@@ -179,15 +189,15 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="advertisement">
-            <div className="Ad-Heading">
+          <div className="advertisement-home">
+            <div className="Ad-Heading-home">
               <p>Advertisement</p>
             </div>
-            <div className="advertise-image">
+            <div className="advertise-image-home">
               {AdData.map((item) => (
                 <>
                   <img
-                    className="Advertise-Img"
+                    className="Advertise-Img-home"
                     src={item.ad_img}
                     alt="advertisement"
                   />

@@ -7,7 +7,7 @@ import Hollywood from './Components/Hollywood';
 import Fitness from './Components/Fitness';
 import Food from './Components/Food';
 import Details from './Components/Details';
-
+import Searchbar from './Components/Searchbar'
 const Routefile = () => {
   return (
     <>
@@ -21,6 +21,7 @@ const Routefile = () => {
             <Route path='/Fitness' element={<Fitness/>} />
             <Route path='/Food' element={<Food/>} />
             <Route path='/details/:id' element={<Details/>}></Route>
+            <Route path="/search/:searchText" element={<Searchbar/>}></Route>
         </Routes>
     </Router>
     </>

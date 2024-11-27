@@ -4,7 +4,29 @@
     font:sans-serif;
 }
 /* Home */
-
+.search-container{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    
+}
+.search-input{
+    width: 50%;
+    height: 50px;
+    border-radius: 40px;
+    background-color: #dae4e8;
+    box-shadow: 2px 1px 10px white;
+}
+.search-button{
+    width: 50px;
+    background-image: url(../assets/icons8-search-26.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+   /* box-shadow: 1px 1px 5px white; */
+   background-color:  #2F4F4F;
+   border-radius: 10px;
+   border: 1px solid  #2F4F4F;
+}
 .home-page-header{
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -258,23 +280,87 @@
 
 .advertisement{
     display: flex; 
+    flex-direction: row;
+    border: 1px none red;
+    margin-left: -660px;
+    
+
+}
+.Ad-Heading{
+   width: 500px;
+   /* border: 1px solid red; */
+   margin-left: -160px;
+}
+.Ad-Heading>p{
+    width: 500px;
+    font-size: 47px;
+    animation: AdHead 3s infinite ease-in-out;
+    overflow: hidden;
+    text-align: center;
+    border-right: 3px solid #82d2d5;
+    margin-top: 35px;
+}
+@keyframes AdHead{
+    0%{
+        color: red;
+        width: 0px;
+    }
+    20%{
+        color: blue;
+    }
+    40%{
+        color: green;
+
+    }
+    50%{
+        width: 500px;
+    }
+    60%{
+        color: chocolate;
+
+    }
+    80%{
+        color: purple;
+
+    }
+    100%{
+        color: red;
+        width: 0px;
+    }
+}
+
+.advertise-image{
+    display: flex;
+    flex-direction: row;
+
+  margin-top: 20px;
+  column-gap: 50px;
+
+}
+.Advertise-Img{
+    border-radius: 10px;
+    width: 385px;
+    height: 380px;
+    /* margin-left: 165px; */
+}
+.advertisement-home{
+    display: flex; 
     flex-direction: column;
     border: 1px none red;
 
 }
-.Ad-Heading{
+.Ad-Heading-home{
     width: 100%;
     display: flex;
     justify-content: center;
 }
-.Ad-Heading>p{
-    font-size: 50px;
+.Ad-Heading-home>p{
+    font-size: 47px;
     animation: AdHead 3s infinite ease;
     overflow: hidden;
-    text-align: center;
     border-right: 3px solid #82d2d5;
-    margin-left: 80px;
     margin-top: 35px;
+    margin-left: 120px;
 }
 @keyframes AdHead{
     0%{
@@ -305,20 +391,20 @@
     }
 }
 
-.advertise-image{
+.advertise-image-home{
     display: flex;
     flex-direction: column;
-    gap: 22px;
     justify-content: center;
-  /* margin-left: 140px; */
+  margin-left: -0px;
   margin-top: 20px;
- align-items: center;
+  gap: 18px;
+
 }
-.Advertise-Img{
+.Advertise-Img-home{
     border-radius: 10px;
-    width: 430px;
+    width: 420px;
     height: 380px;
-    margin-left: 158px;
+    margin-left: 200px;
 }
 
 
@@ -558,7 +644,7 @@ color: white;
     box-shadow: -1px -1px 3px 0px #1c331c;
 }
 .BackEroImg{
-    background-image: url(../assets/White_Left_Aero.png);
+    background-image: url();
     background-position: initial;
     background-size: cover;
     width: 25px;
@@ -876,7 +962,7 @@ background-color:#697878;
 
 
 .scrolltoperoimg{
-    background-image: url(../assets/white-top-ero.png);
+    background-image: url(../assets/icons8-arrow.gif);
     background-position: center;
     background-size: cover;
     width: 30px;
@@ -938,7 +1024,7 @@ background-color:#697878;
     }   
     .BollyMainMovie{
         width: 100%;
-        margin-left: 30px;
+        margin-left: 20px;
     }
     .main-heading{
         margin-left: 20px;
@@ -996,24 +1082,34 @@ background-color:#697878;
         width: 350px;
         margin-left: 15px;
     }
-    .advertisement{
-       margin-top: 0px;
+    /* .advertisement{
+       /* margin-top: 0px;
        width: 100%;
+       height: auto; */
+       /* display: flex;
+       flex-direction: column; */
+   
+
+   .advertise-image{
+    display: flex;
+    flex-direction: column;
+   }
+       
+   .Advertise-Img{
+        width: 50%;
        height: auto;
-    }
-    .Advertise-Img{
+       margin-left: 30px;
+   }
+       
+
+    .Advertise-Img-home{
         width: 100%;
-        height: auto;
-        margin-left: 30px;
+        margin-left: 15px;
     }
     .Ad-Heading{
         font-size: medium;
         margin-left: -50px;
     }
-    /* .advertise-image{
-    width: 100%;
-    height: auto;
-    } */
     .main-post-image{
         width: 375px;
         height: 250px;
