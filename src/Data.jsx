@@ -176,7 +176,7 @@ const Data = [
     {
       "id": 25,
       "title": "Flying cars",
-      "img_url": "https://static1.pocketlintimages.com/wordpress/wp-content/uploads/142027-gadgets-feature-life-in-the-future-tech-that-will-change-the-way-we-live-image10-fr4edrowqb.jpg?q=50&fit=crop&w=750&dpr=1.5",
+      "img_url": "",
       "description": "When there's no space left on the roads, it's not unreasonable to think we might take to the skies. There are already plenty of interesting flying car designs that show this future is a realistic possibility. Perhaps if it's not flying cars, we might all have other forms of personal transport - jetpacks, for example, have been a popular pursuit of inventors and thrill-seekers for decades.",
       "category": "Technology"
     },

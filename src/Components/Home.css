@@ -40,6 +40,8 @@
     justify-content: center;
     border-radius: 20px;
     overflow: hidden;
+    flex-direction: column;
+    position: relative;
 }
 .headerbox1{
     grid-column: 1/2;
@@ -58,42 +60,23 @@
     height: 100%;
     position:sticky;
 }
-.home-page-child-one{
-    background-position: center;
-    background-size: cover;
+
+.header-text{
+    bottom: -150px;
+    position: absolute;
+    transition: 0.5s all ease-in-out;
+    overflow: hidden;
+    color: #ffffff;
+
 }
-.home-page-child-two{
-    position: relative;
-}
-.home-page-empty{
-    background-color: #1c334270;
-    z-index: 7;
-    position: sticky;
-    width: 100%;
-    height: 100px;
-    transition: 1s ease-in-out;
-    cursor: pointer;
-}
-/* .home-page-empty-one{
-    background-color: #1c334270;
-    z-index: 1;
-    position: sticky;
-    width: 100%;
-    height: 100px;
-    transition: 1s linear;
-    cursor: pointer;
-}
-.headerbox:hover .home-page-empty-one{
+/* .headerbox:hover .home-page-empty{
     margin-top: 140px;
     margin-left: 100px;
 } */
-.headerbox:hover .home-page-empty{
-    margin-top: -140px;
+.headerbox:hover .header-text{
+    bottom: 1px;
 }
-.home-page-empty>h2{
-    color: gold;
-}
-.home-page-empty>p{
+.header-text{
     color: #ffffff;
 }
 
@@ -169,6 +152,7 @@
    
     border: 1px none red;
     margin-left: 50px;
+    height: min-content;
     
 }
 .story-data{
@@ -278,18 +262,13 @@
 
 
 
-.advertisement{
-    display: flex; 
-    flex-direction: row;
-    border: 1px none red;
-    margin-left: -660px;
-    
 
-}
+
+    
 .Ad-Heading{
    width: 500px;
    /* border: 1px solid red; */
-   margin-left: -160px;
+   
 }
 .Ad-Heading>p{
     width: 500px;
@@ -332,16 +311,15 @@
 .advertise-image{
     display: flex;
     flex-direction: row;
-
-  margin-top: 20px;
-  column-gap: 50px;
+    margin-top: 20px;
+    column-gap: 50px;
 
 }
 .Advertise-Img{
     border-radius: 10px;
-    width: 385px;
+    width: 100%;
     height: 380px;
-    /* margin-left: 165px; */
+    /* margin-left: -165px; */
 }
 .advertisement-home{
     display: flex; 
@@ -419,6 +397,8 @@
     background: var(--c),var(--c),var(--c),var(--c);
     background-size: 21px 21px;
     animation: l5 1.5s infinite cubic-bezier(0.3,1,0,1);
+    margin-left: 50%;
+    margin-top: 20%;
 }
 @keyframes l5 {
    0%   {background-position: 0    0,100% 0   ,100% 100%,0 100%}
@@ -426,8 +406,6 @@
    66%  {background-position: 100% 0,100% 100%,0    100%,0 0   ;width:60px;height: 60px}
    100% {background-position: 100% 0,100% 100%,0    100%,0 0   }
 }
-
-
 
 .main-heading{
     text-align: left;
@@ -644,12 +622,12 @@ color: white;
     box-shadow: -1px -1px 3px 0px #1c331c;
 }
 .BackEroImg{
-    background-image: url();
+    background-image: url(../assets/icons8-back-arrow.gif);
     background-position: initial;
     background-size: cover;
     width: 25px;
     height: 25px;
-    margin-top: 4px;
+    margin-top: -2px;
     background-color:#697878;
 }
 
@@ -781,6 +759,10 @@ color: white;
     justify-content: space-between;
     margin-top: 25px;
     cursor: pointer;
+    background-color:#697878;
+}
+.parlike{
+    background-color:#697878;
 }
 .likeimg{
     background-image: url(../assets/icons8-like.gif);
@@ -999,21 +981,33 @@ background-color:#697878;
 
 /* Media Screeen */
 @media screen and (max-width: 600px) {
+
+.search-container{
+    margin-top: 30px;
+}
     .home-page-header{
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 2fr 1fr;
+    
     }
+    
     .headerbox1{
         grid-column: 1/3;
         grid-row: 1/2;
-    }
+        width: 360px;
+        margin-left: 20px; 
+      }
     .headerbox2{
         grid-column: 1/2;
         grid-row: 2/3;
+        margin-top: -10px;
+        margin-left: 20px;
     }
     .headerbox3{
         grid-column: 2/3;
         grid-row: 2/3;
+        margin-top: -10px;
+        margin-left: 20px;
     }
     .home-page-child-one{
         flex-direction: column;
@@ -1023,8 +1017,9 @@ background-color:#697878;
 
     }   
     .BollyMainMovie{
-        width: 100%;
-        margin-left: 20px;
+        width: 97%;
+        margin-left: 25px;
+        height: max-content;
     }
     .main-heading{
         margin-left: 20px;
@@ -1039,16 +1034,16 @@ background-color:#697878;
     }
     .top-stories{
         width: 100%;
-        padding: 0px;
+        padding: 0%;
     }
     .story-data{
         flex-direction: column;
         height: 450px;
         border-bottom: 2px solid #5fd2d4;
         padding-bottom: 20px;
-        width: 380px;
-        margin-left: -40px;
-        border-radius: 10px;
+        width: 360px;
+        margin-left: -45px;
+        border-radius: 0px;
     }
     .story-category{
         left: 20px;
@@ -1057,9 +1052,15 @@ background-color:#697878;
     }
     .title-description{
         border: transparent;
+        width: 340px;
+    }
+    /* .Title{
         width: 350px;
     }
-.home-page-empty{
+    .storytitle{
+        width: 350px;
+    } */
+   .home-page-empty{
     display: none;
 }
     .top-post-main{
@@ -1075,12 +1076,12 @@ background-color:#697878;
         color: white;
     }
     .mainpost{
-        width: auto;
+        width:auto;
     }
     .post{
         padding: 10px;
-        width: 350px;
-        margin-left: 15px;
+        width: 340px;
+        margin-left: 10px;
     }
     /* .advertisement{
        /* margin-top: 0px;
@@ -1093,31 +1094,35 @@ background-color:#697878;
    .advertise-image{
     display: flex;
     flex-direction: column;
+    gap: 20px;
    }
        
    .Advertise-Img{
-        width: 50%;
+        width: 96%;
        height: auto;
-       margin-left: 30px;
+       margin-left: 8px;
    }
-       
-
+    
     .Advertise-Img-home{
         width: 100%;
         margin-left: 15px;
     }
     .Ad-Heading{
         font-size: medium;
-        margin-left: -50px;
+        margin-left: 30px;
+    }
+    .Ad-Heading-home>p{
+        font-size: 45px;
+        margin-left: 20px;
     }
     .main-post-image{
-        width: 375px;
+        width: 360px;
         height: 250px;
-        margin-left: 15px;
+        margin-left: 14px;
     }
     .main-post-text{
         margin-left: 20px;
-        width: 360px;
+        width: 350px;
     }
     .top-post-main-bollywood{
         width: 100%;
@@ -1136,16 +1141,16 @@ background-color:#697878;
     }
     .post-bollywood{
         padding: 10px;
-        width: 350px;
-        margin-left: 15px;
+        width: 340px;
+        margin-left: 5px;
     }
     .main-post-image-bollywood{
-        width: 375px;
+        width: 360px;
         height: 250px;
-        margin-left: 15px;
+        margin-left: 5px;
     }
     .main-post-text-bollywood{
-        margin-left: 20px;
+        margin-left: 10px;
         width: 360px;
     }
     .three-row{
@@ -1155,16 +1160,20 @@ background-color:#697878;
     .home-page-trending{
         height: auto;
     }
-.Load-more{
-    margin-left: 50px;
-}
+    .Load-more{
+    margin-left: 30px;
+    }
 
+    .loader{
+        margin-top: 80%;
+        margin-left: 45%;
+    }
     /* Footer */
     .footer{
         flex-direction: column;
         gap: 10px;
-        margin-left: 15px;
-        width: 275px;
+        margin-left: 8px;
+        width: 260px;
     }
     .footerlogo{
         gap: 10px;

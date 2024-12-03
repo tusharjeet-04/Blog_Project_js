@@ -40,16 +40,6 @@ const Hollywood = () => {
       id: "3",
       ad_img:
         "https://asset.gecdesigns.com/img/social-media-poster-templates/furniture-shop-advertisement-instagram-poster-template-1683124415404-cover.webp",
-    },
-    {
-      id: "4",
-      ad_img:
-        "https://img.freepik.com/premium-photo/realistic-soft-drink-advertisement-text-soft-drinks-soda-poster-generative-ai_1092559-16801.jpg?semt=ais_hybrid",
-    },
-    {
-      id: "5",
-      ad_img:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaHiA3LVCjCgCRbVO7sUJ9l9SVpQHVa1kDgg&s",
     }
   ];
   const random = Math.round(Math.random() * (HollyMovies.length-2));
@@ -137,11 +127,13 @@ const Hollywood = () => {
           </div>
            <button className="Load-more" onClick={handleLoad}>LoadMore
            </button>
-
-          {/* <div className="advertisement">
-            <div className="Ad-Heading">
+        </div>
+      </div>
+      <div className="Ad-Heading">
               <p>Advertisement</p>
             </div>
+          {/* <div className="advertisement"> */}
+           
             <div className="advertise-image">
               {AdData.map((item) => (
                 <>
@@ -153,9 +145,7 @@ const Hollywood = () => {
                 </>
               ))}
             </div>
-          </div> */}
-        </div>
-      </div>
+            {/* </div> */}
       <Footer />
       </>
     )}

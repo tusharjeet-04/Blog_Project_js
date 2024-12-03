@@ -124,7 +124,7 @@
         position: fixed;
         top: -100%;
         left: 4%;
-        width: 90%;
+        width: 65%;
         gap: 0px;
         height: auto;
         flex-direction: column;
@@ -145,8 +145,6 @@
         gap: 10px;
     }
 }
-
-
 
 
 .menu_list:hover{

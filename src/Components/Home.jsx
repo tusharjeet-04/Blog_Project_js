@@ -1,15 +1,15 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from "./Navbar";
 import DataContext from "./DataContext";
 import "./Home.css";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 
 const Home = () => {
-  const [searchText,setSearchText] = useState("");
-  const navigate= useNavigate();
+  const [searchText, setSearchText] = useState("");
+  const navigate = useNavigate();
 
-  const handleSearch=()=>{
+  const handleSearch = () => {
     navigate(`search/${searchText}`);
   }
 
@@ -50,71 +50,56 @@ const Home = () => {
   const img1 = data.find(
     (item) =>
       item.id ===
-      parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length-2)))+1])
+      parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length - 2))) + 1])
   ) || {};
   const img2 = data.find(
     (item) =>
       item.id ===
-      parseInt(SelectedArray[(Math.round(Math.random() *(SelectedArray.length-2)))+1])
+      parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length - 2))) + 1])
   ) || {};
   const img3 = data.find(
     (item) =>
       item.id ===
-      parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length-2)))+1])
+      parseInt(SelectedArray[(Math.round(Math.random() * (SelectedArray.length - 2))) + 1])
   ) || {};
 
-  
+
   let random = Math.round(Math.random() * (data.length - 2));
-  if(random <0){
+  if (random < 0) {
     random = 0;
   }
 
-  if(random == (data.length - 2)){
+  if (random == (data.length - 2)) {
     random = random - 1;
   }
-  const limitdescription =(text)=>{
-    const words =text.split(' ');
-    return words.slice(0,15).join(' ') + (words.length > 15? '...' : '');
+  const limitdescription = (text) => {
+    const words = text.split(' ');
+    return words.slice(0, 15).join(' ') + (words.length > 15 ? '...' : '');
   }
-  const description =(text)=>{
-    const words =text.split(' ');
-    return words.slice(0,45).join(' ') + (words.length > 50? '...' : '');
+  const description = (text) => {
+    const words = text.split(' ');
+    return words.slice(0, 45).join(' ') + (words.length > 50 ? '...' : '');
   }
   return (
     <>
       <Navbar />
       <div className="search-container">
-          <input type="text" value={searchText} onChange={(e)=>setSearchText(e.target.value)} className="search-input" placeholder="Search in Glitz & Bytes"/>
-          <button onClick={handleSearch} className="search-button"></button>
-        </div>
+        <input type="text" value={searchText} onChange={(e) => setSearchText(e.target.value)} className="search-input" placeholder="Search in Glitz & Bytes" />
+        <button onClick={handleSearch} className="search-button"></button>
+      </div>
       <div className="home-page-parent">
         <div className="home-page-header">
           <div className="headerbox1 headerbox">
-            <div className="home-page-child-one">
-              <img className="home-page-image" alt="loading" src={img1.img_url} />
-              <div className="home-page-empty">
-                <h2>{img1.title}</h2>
-                <p>{img1.description}</p>
-              </div>
-            </div>
+            <img className="home-page-image" alt="loading" src={img1.img_url} />
+            <p className="header-text">{description(img3.description)}</p>
           </div>
           <div className="headerbox2 headerbox">
-            <div className="home-page-child-two">
-              <img className="home-page-image" alt="loading" src={img2.img_url} />
-              <div className="home-page-empty">
-                <h2>{img2.title}</h2>
-                <p>{img2.description}</p>
-              </div>
-            </div>
+            <img className="home-page-image" alt="loading" src={img2.img_url} />
+            <p className="header-text">{limitdescription(img3.description)}</p>
           </div>
           <div className="headerbox3 headerbox">
-            <div className="home-page-child-three">
-              <img className="home-page-image" alt="loading" src={img3.img_url} />
-              <div className="home-page-empty">
-                <h2>{img3.title}</h2>
-                <p>{img3.description}</p>
-              </div>
-            </div>
+            <img className="home-page-image" alt="loading" src={img3.img_url} />
+            <p className="header-text">{limitdescription(img3.description)}</p>
           </div>
         </div>
       </div>
@@ -172,7 +157,7 @@ const Home = () => {
           <div className="top-post">
             <h1>Top Posts</h1>
             <Link to={`/details/${data[random].id}`} className="main-post">
-              <img className="main-post-image"src={data[random].img_url} />
+              <img className="main-post-image" src={data[random].img_url} />
               <p className="main-post-text">{limitdescription(data[random].description)}</p>
             </Link>
           </div>

@@ -131,10 +131,14 @@ const Bollywood = () => {
           </div>
            <button className="Load-more" onClick={handleLoad}>LoadMore
            </button>
-           <div className="Ad-Heading">
+           
+          
+        </div>
+      </div>
+      <div className="Ad-Heading">
               <p>Advertisement</p>
             </div>
-          <div className="advertisement">
+          {/* <div className="advertisement"> */}
            
             <div className="advertise-image">
               {AdData.map((item) => (
@@ -147,9 +151,7 @@ const Bollywood = () => {
                 </>
               ))}
             </div>
-          </div>
-        </div>
-      </div>
+            {/* </div> */}
       <Footer />
       </>
     )}
